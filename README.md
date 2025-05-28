@@ -67,6 +67,9 @@ To start the Streamlit app, run:
 ```bash
 streamlit run dashboard/dashboard.py
 ```
+## 🔄 Dashboard
+![Dasjboard](./images/dashboard.png)  
+<!-- Replace the above path with your actual streamlit Dashboard image -->
 
 ---
 
