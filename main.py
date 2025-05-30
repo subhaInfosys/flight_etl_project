@@ -6,9 +6,9 @@ from load import load_data
 from model import train_model
 from dotenv import load_dotenv
 from extract import extract_data
+from alert import send_email_alert
 from sqlalchemy import create_engine
 from transform import transform_data
-from alert import send_email_alert
 
 load_dotenv(override=True)
 
@@ -23,10 +23,7 @@ port = os.getenv('DB_PORT', '5432')  # default to '5432' as a string
 engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}")
 
 def run_etl_pipeline():
-    """Run the ETL process (import and call your ETL logic here)."""
-    from extract import extract_data
-    from transform import transform_data
-    from load import load_data
+    """Run the ETL process."""
 
     print("🚀 Starting ETL pipeline...")
 
