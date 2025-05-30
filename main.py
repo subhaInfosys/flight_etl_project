@@ -33,7 +33,7 @@ def run_etl_pipeline():
     print("Extracting data...")
     raw = extract_data()
     print("Transforming data...")
-    clean = transform_dataa(raw)
+    clean = transform_data(raw)
     print("Loading data...")
     load_data(clean)
 
