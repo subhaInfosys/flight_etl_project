@@ -62,6 +62,39 @@ To start the Flask server, run:
 python3 app.py
 ```
 
+## 🎯 API Endpoint for Prediction
+
+You can make a POST request to the Flask API to get flight delay predictions using a trained machine learning model.
+
+### 📌 Endpoint Example
+
+```
+POST http://127.0.0.1:5000/predict
+```
+
+### 📥 Request Body (JSON)
+
+```json
+{
+  "airline": "Delta",
+  "departure_airport": "JFK",
+  "arrival_airport": "LAX",
+  "dep_hour": 15,
+  "dep_dayofweek": 3
+}
+```
+
+### 📤 Response Example
+
+```json
+{
+  "prediction": "Delayed"  // or "On Time"
+}
+```
+
+> 🧠 The model predicts whether a flight is likely to be **Delayed** or **On Time** based on the input parameters.
+
+
 ### 3. Running the Streamlit Dashboard
 To start the Streamlit app, run:
 ```bash

@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from extract import extract_data
 from sqlalchemy import create_engine
 from transform import transform_data
-
+from alert import send_email_alert
 
 load_dotenv(override=True)
 
@@ -22,11 +22,18 @@ port = os.getenv('DB_PORT', '5432')  # default to '5432' as a string
 # Connect to DB
 engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}")
 
-if __name__ == '__main__':
+def run_etl_pipeline():
+    """Run the ETL process (import and call your ETL logic here)."""
+    from extract import extract_data
+    from transform import transform_data
+    from load import load_data
+
+    print("🚀 Starting ETL pipeline...")
+
     print("Extracting data...")
     raw = extract_data()
     print("Transforming data...")
-    clean = transform_data(raw)
+    clean = transform_dataa(raw)
     print("Loading data...")
     load_data(clean)
 
@@ -38,3 +45,11 @@ if __name__ == '__main__':
     model = train_model(data)
     
     print("ETL + ML pipeline completed!")
+
+if __name__ == '__main__':
+    try:
+        run_etl_pipeline()
+    except Exception as e:
+        error_message = f"🚨 ETL pipeline failed:\n{str(e)}"
+        send_email_alert("🚨 Flight ETL Pipeline Failure", error_message)
+    
