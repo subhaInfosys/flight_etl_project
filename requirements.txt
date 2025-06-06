@@ -6,5 +6,5 @@ psycopg2-binary
 matplotlib
 joblib
 flask
-sklearn
+scikit-learn
 
